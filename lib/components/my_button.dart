@@ -1,36 +1,28 @@
 import 'package:flutter/material.dart';
 
-import '../const/colors.dart';
-
 class MyButton extends StatelessWidget {
+  final Function()? onTap;
   final String title;
-  final VoidCallback? ontap;
-
-  const MyButton({
-    super.key,
-    required this.title,
-    this.ontap,
-  });
+  const MyButton({super.key, this.onTap, required this.title});
 
   @override
   Widget build(BuildContext context) {
-    var media = MediaQuery.of(context).size;
-    return InkWell(
-      onTap: ontap,
+    return GestureDetector(
+      onTap: onTap,
       child: Container(
-        height: media.height * .06,
-        width: double.infinity,
+        padding: EdgeInsets.all(25),
+        margin: EdgeInsets.symmetric(horizontal: 25),
         decoration: BoxDecoration(
-            color: primaryColor,
-            borderRadius: BorderRadius.circular(16),
-            boxShadow: [
-              BoxShadow(color: Colors.black, spreadRadius: 2, blurRadius: 1)
-            ]),
+          color: Theme.of(context).colorScheme.secondary,
+          borderRadius: BorderRadius.circular(8),
+        ),
         child: Center(
           child: Text(
             title,
             style: TextStyle(
-                fontWeight: FontWeight.bold, fontSize: 25, color: bgColor),
+                fontWeight: FontWeight.bold,
+                fontSize: 16,
+                color: Theme.of(context).colorScheme.inversePrimary),
           ),
         ),
       ),

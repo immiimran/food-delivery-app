@@ -46,14 +46,14 @@ class OnboardingScreen extends StatelessWidget {
               ),
               MyButton(
                 title: "Login",
-                ontap: () {},
+                onTap: () {},
               ),
               SizedBox(
                 height: 15,
               ),
               MyButton(
                 title: "Sign UP",
-                ontap: () {},
+                onTap: () {},
               ),
               SizedBox(
                 height: 10,
