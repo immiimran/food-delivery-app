@@ -1,27 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:food_delivery/components/my_button.dart';
-import 'package:food_delivery/components/my_textfield.dart';
-import 'package:food_delivery/screens/home_page.dart';
 
-class LoginPage extends StatefulWidget {
+import '../../components/my_textfield.dart';
+
+class SignUp extends StatefulWidget {
   final void Function()? onTap;
-
-  const LoginPage({super.key, this.onTap});
+  const SignUp({super.key, this.onTap});
 
   @override
-  State<LoginPage> createState() => _LoginPageState();
+  State<SignUp> createState() => _SignUpState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _SignUpState extends State<SignUp> {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
-
-// login method
-  void login() {
-    Navigator.push(
-        context, MaterialPageRoute(builder: (context) => HomePage()));
-  }
-
+  final TextEditingController confirmPasswordController =
+      TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -42,7 +36,7 @@ class _LoginPageState extends State<LoginPage> {
 
             //message, app slogan
             Text(
-              "Food Delivery App",
+              "Let's create an account",
               style: TextStyle(
                   fontSize: 22,
                   color: Theme.of(context).colorScheme.inversePrimary),
@@ -64,31 +58,35 @@ class _LoginPageState extends State<LoginPage> {
                 hintext: 'Password',
                 obsecureText: true),
             SizedBox(
-              height: 25,
+              height: 10,
             ),
-
-            //sign in button
-            MyButton(
-              title: "Sign In",
-              onTap: login,
-            ),
+            MyTextfield(
+                controller: confirmPasswordController,
+                hintext: 'Confirm Password',
+                obsecureText: true),
             SizedBox(
               height: 25,
             ),
 
-            // not a member? sign up now
+            //sign in button
+            MyButton(title: "Sign UP"),
+            SizedBox(
+              height: 25,
+            ),
+
+            // Already have an account? Sign In
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  "Not a Member? ",
+                  "Already have an account? ",
                   style: TextStyle(
                       color: Theme.of(context).colorScheme.inversePrimary),
                 ),
                 GestureDetector(
                   onTap: widget.onTap,
                   child: Text(
-                    "Sign Up Now",
+                    "Sign In",
                     style: TextStyle(
                         color: Theme.of(context).colorScheme.inversePrimary,
                         fontWeight: FontWeight.bold),
