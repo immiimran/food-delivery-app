@@ -18,6 +18,9 @@ class CartPage extends StatelessWidget {
           appBar: AppBar(
             backgroundColor: Colors.transparent,
             foregroundColor: Theme.of(context).colorScheme.inversePrimary,
+            actions: [
+              // clear all cart
+            ],
             centerTitle: true,
             title: Text("Cart Page"),
           ),
